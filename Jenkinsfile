@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = 'azimakmatov'
         DOCKER_PASSWORD = 'Docker123!'
-        DOCKER_REGISTRY = 'https://hub.docker.com/repository/docker/azimakmatov/jenkins/general'  // Change this to your Docker registry if needed
+        DOCKER_REGISTRY = 'https://hub.docker.com'  // Change this to your Docker registry if needed
         DOCKER_IMAGE = 'nginx-custom:latest'  // Change this to your desired image name and tag
     }
     
@@ -19,6 +19,13 @@ pipeline {
             steps {
                 script {
                     docker.build(env.DOCKER_IMAGE, '-f Dockerfile .')
+                }
+            }
+        }
+        stage('Tag image') {
+            steps {
+                script {
+                    docker.tag(env.DOCKER_IMAGE)
                 }
             }
         }
