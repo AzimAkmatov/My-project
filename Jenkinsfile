@@ -2,7 +2,9 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_REGISTRY = 'docker.io'  // Change this to your Docker registry if needed
+        DOCKER_USERNAME = 'azimakmatov'
+        DOCKER_PASSWORD = 'Docker123!'
+        DOCKER_REGISTRY = 'https://hub.docker.com/'  // Change this to your Docker registry if needed
         DOCKER_IMAGE = 'nginx-custom:latest'  // Change this to your desired image name and tag
     }
     
